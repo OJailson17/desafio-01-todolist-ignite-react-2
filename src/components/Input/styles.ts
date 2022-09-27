@@ -33,6 +33,7 @@ export const InputContainer = styled.div`
 		background-color: ${props => props.theme.blueDark};
 		color: ${props => props.theme['gray-100']};
 		font-size: 0.875rem;
+		font-weight: bold;
 
 		display: flex;
 		align-items: center;

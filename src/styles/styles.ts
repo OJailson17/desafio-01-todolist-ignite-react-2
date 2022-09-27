@@ -55,5 +55,8 @@ export const TaskContainer = styled.main`
 	& > .tasks {
 		width: 100%;
 		margin-top: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
 	}
 `;
