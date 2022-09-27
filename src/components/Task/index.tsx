@@ -1,12 +1,32 @@
-import { Trash } from 'phosphor-react';
-import { TaskContentContainer } from './styles';
+import * as Checkbox from '@radix-ui/react-checkbox';
+import { Trash, Check } from 'phosphor-react';
+import { useState } from 'react';
+import { checkIcon, TaskContentContainer } from './styles';
 
 export const Task = () => {
+	const [isTaskDone, setIsTaskDone] = useState(false);
+
 	return (
-		<TaskContentContainer>
-			<input type='checkbox' name='task' id='task' />
-			<div>lorem</div>
-			<Trash size={24} className='trashBtn' />
+		<TaskContentContainer isTaskDone={isTaskDone}>
+			<div className='taskContent'>
+				<Checkbox.Root
+					checked={isTaskDone}
+					onCheckedChange={checked => {
+						if (checked) {
+							setIsTaskDone(true);
+						} else {
+							setIsTaskDone(false);
+						}
+					}}
+				>
+					<Checkbox.Indicator>
+						<Check size={15} color='white' weight='bold' />
+					</Checkbox.Indicator>
+				</Checkbox.Root>
+
+				<div>Task que precisa ser concluída</div>
+				<Trash size={24} className='trashBtn' />
+			</div>
 		</TaskContentContainer>
 	);
 };
