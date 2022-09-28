@@ -3,6 +3,7 @@ import {
 	ReactNode,
 	SetStateAction,
 	useContext,
+	useEffect,
 	useState,
 } from 'react';
 
@@ -25,6 +26,20 @@ const TaskContext = createContext({} as ITaskContext);
 
 export const TaskContextProvider = ({ children }: TaskContextProviderProps) => {
 	const [tasks, setTasks] = useState<ITask[]>([]);
+
+	useEffect(() => {
+		if (tasks.length > 0) {
+			localStorage.setItem('@todo', JSON.stringify(tasks));
+		}
+	}, [tasks]);
+
+	useEffect(() => {
+		const localTasks = localStorage.getItem('@todo');
+
+		if (localTasks) {
+			setTasks(JSON.parse(localTasks));
+		}
+	}, []);
 
 	return (
 		<TaskContext.Provider value={{ tasks, setTasks }}>

@@ -4,9 +4,9 @@ import { App } from './App';
 import { TaskContextProvider } from './context/taskContext';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-	<React.StrictMode>
-		<TaskContextProvider>
-			<App />
-		</TaskContextProvider>
-	</React.StrictMode>,
+	// <React.StrictMode>
+	<TaskContextProvider>
+		<App />
+	</TaskContextProvider>,
+	// </React.StrictMode>,
 );
