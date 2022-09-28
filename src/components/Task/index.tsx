@@ -1,6 +1,7 @@
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { Trash, Check } from 'phosphor-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTask } from '../../context/taskContext';
 import { TaskContentContainer } from './styles';
 
 interface Task {
@@ -15,6 +16,25 @@ interface TaskProps {
 
 export const Task = ({ task }: TaskProps) => {
 	const [isTaskDone, setIsTaskDone] = useState(false);
+	const { tasks, setTasks } = useTask();
+
+	useEffect(() => {
+		const allTasks = tasks.map(taskItem => {
+			if (taskItem.id === task.id) {
+				taskItem = { ...taskItem, isDone: isTaskDone };
+			}
+
+			return taskItem;
+		});
+
+		setTasks(allTasks);
+
+		console.log(allTasks);
+	}, [isTaskDone]);
+
+	useEffect(() => {
+		setIsTaskDone(task.isDone);
+	}, []);
 
 	return (
 		<TaskContentContainer isTaskDone={isTaskDone}>
