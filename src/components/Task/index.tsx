@@ -1,9 +1,19 @@
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { Trash, Check } from 'phosphor-react';
 import { useState } from 'react';
-import { checkIcon, TaskContentContainer } from './styles';
+import { TaskContentContainer } from './styles';
 
-export const Task = () => {
+interface Task {
+	id: string;
+	title: string;
+	isDone: boolean;
+}
+
+interface TaskProps {
+	task: Task;
+}
+
+export const Task = ({ task }: TaskProps) => {
 	const [isTaskDone, setIsTaskDone] = useState(false);
 
 	return (
@@ -24,7 +34,7 @@ export const Task = () => {
 					</Checkbox.Indicator>
 				</Checkbox.Root>
 
-				<div>Task que precisa ser concluída</div>
+				<div>{task.title}</div>
 				<Trash size={24} className='trashBtn' />
 			</div>
 		</TaskContentContainer>

@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const TaskContainer = styled.main`
 	max-width: 46rem;
-	margin: 0 auto;
-	margin-top: 4rem;
+	margin: 4rem auto 4rem;
 
 	display: flex;
 	flex-direction: column;
