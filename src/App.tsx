@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'styled-components';
+import { EmptyTask } from './components/EmptyTask';
 import { Header } from './components/Header';
 import { Input } from './components/Input';
 import { Task } from './components/Task';
@@ -28,7 +29,7 @@ function App() {
 
 				{/* Tasks */}
 				<div className='tasks'>
-					<Task />
+					<EmptyTask />
 				</div>
 			</TaskContainer>
 		</ThemeProvider>
