@@ -18,6 +18,17 @@ export const Task = ({ task }: TaskProps) => {
 	const [isTaskDone, setIsTaskDone] = useState(false);
 	const { tasks, setTasks } = useTask();
 
+	// Delete tasks
+	const handleDeleteTask = () => {
+		// Return all the tasks that id is different from clicked task id
+		const removeTasks = tasks.filter(taskItem => taskItem.id !== task.id);
+		setTasks(removeTasks);
+
+		if (removeTasks.length <= 0) {
+			localStorage.removeItem('@todo');
+		}
+	};
+
 	useEffect(() => {
 		const allTasks = tasks.map(taskItem => {
 			if (taskItem.id === task.id) {
@@ -28,8 +39,6 @@ export const Task = ({ task }: TaskProps) => {
 		});
 
 		setTasks(allTasks);
-
-		console.log(allTasks);
 	}, [isTaskDone]);
 
 	useEffect(() => {
@@ -55,7 +64,9 @@ export const Task = ({ task }: TaskProps) => {
 				</Checkbox.Root>
 
 				<div>{task.title}</div>
-				<Trash size={24} className='trashBtn' />
+				<button onClick={handleDeleteTask}>
+					<Trash size={22} className='trashBtn' />
+				</button>
 			</div>
 		</TaskContentContainer>
 	);
