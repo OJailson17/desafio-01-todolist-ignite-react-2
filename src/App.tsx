@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { EmptyTask } from './components/EmptyTask';
 import { Header } from './components/Header';
@@ -12,6 +11,9 @@ import { defaultTheme } from './themes/defaultTheme';
 function App() {
 	const { tasks } = useTask();
 
+	const numberOfTasks = tasks.length;
+	const numberOfDoneTasks = tasks.filter(task => task.isDone).length;
+
 	return (
 		<ThemeProvider theme={defaultTheme}>
 			<GlobalStyles />
@@ -22,12 +24,14 @@ function App() {
 				<div className='tasksInfo'>
 					<div>
 						<span className='createdTasks'>Tarefas Criadas</span>
-						<div>{tasks.length}</div>
+						<div>{numberOfTasks}</div>
 					</div>
 
 					<div>
 						<span className='tasksDone'>Concluídas</span>
-						<div>2 de {tasks.length}</div>
+						<div>
+							{numberOfDoneTasks} de {numberOfTasks}
+						</div>
 					</div>
 				</div>
 

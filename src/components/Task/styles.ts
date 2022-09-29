@@ -27,7 +27,7 @@ export const TaskContentContainer = styled.div<TaskContainerProps>`
 		background-color: ${props => props.theme['gray-500']};
 		border-radius: 8px;
 
-		button {
+		button:first-child {
 			width: 1.1rem;
 			height: 1.1rem;
 			border-radius: 50%;
@@ -47,14 +47,29 @@ export const TaskContentContainer = styled.div<TaskContainerProps>`
 			color: ${props => (props.isTaskDone ? props.theme['gray-300'] : '')};
 		}
 
-		& .trashBtn {
-			color: ${props => props.theme.danger};
+		button:last-child {
+			width: 2rem;
+			height: 2rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			background-color: transparent;
+			border: none;
+			border-radius: 4px;
+
+			&:hover {
+				background-color: ${props => props.theme['gray-400']};
+				color: ${props => props.theme.danger};
+			}
+
+			& .trashBtn {
+				color: ${props => props.theme['gray-300']};
+
+				&:hover {
+					color: ${props => props.theme.danger};
+				}
+			}
 		}
 	}
 `;
-
-export const checkIcon = {
-	background: 'purple',
-	borderRadius: '50%',
-	color: 'white',
-};
