@@ -59,7 +59,7 @@ export const Task = ({ task }: TaskProps) => {
 					}}
 				>
 					<Checkbox.Indicator>
-						<Check size={15} color='white' weight='bold' />
+						<Check size={'100%'} color='white' weight='bold' />
 					</Checkbox.Indicator>
 				</Checkbox.Root>
 

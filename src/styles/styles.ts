@@ -8,17 +8,14 @@ export const TaskContainer = styled.main`
 	flex-direction: column;
 	align-items: center;
 
-	/* background-color: green; */
-
 	& > .tasksInfo {
 		width: 100%;
-		/* background-color: green; */
+
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 
 		& > div {
-			/* background-color: brown; */
 			display: flex;
 			align-items: center;
 			justify-content: center;

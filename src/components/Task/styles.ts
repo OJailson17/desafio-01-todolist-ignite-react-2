@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface TaskContainerProps {
 	isTaskDone?: boolean;
@@ -16,8 +16,6 @@ export const TaskContentContainer = styled.div<TaskContainerProps>`
 	border-radius: 8px;
 	padding: 1rem 1rem;
 
-	/* background-color: red; */
-
 	& .taskContent {
 		width: 100%;
 		background-color: yellow;
@@ -31,15 +29,20 @@ export const TaskContentContainer = styled.div<TaskContainerProps>`
 			width: 1.1rem;
 			height: 1.1rem;
 			border-radius: 50%;
-			border: ${props => `solid 1px ${props.theme.blue}`};
+			text-align: center;
+			border: ${props => `solid 2px ${props.theme.blue}`};
 			background-color: ${props =>
 				props.isTaskDone ? props.theme.purpleDark : 'transparent'};
+
+			&:hover {
+				border: ${props => `solid 2px ${props.theme.purple}`};
+				background-color: ${props => props.isTaskDone && props.theme.purple};
+			}
 		}
 
 		div {
 			flex: 1;
 			margin: 0 1em;
-			/* background-color: green; */
 			font-size: 0.875rem;
 			word-wrap: break-word;
 			word-break: break-all;
@@ -60,15 +63,14 @@ export const TaskContentContainer = styled.div<TaskContainerProps>`
 
 			&:hover {
 				background-color: ${props => props.theme['gray-400']};
-				color: ${props => props.theme.danger};
+
+				.trashBtn {
+					color: ${props => props.theme.danger};
+				}
 			}
 
 			& .trashBtn {
 				color: ${props => props.theme['gray-300']};
-
-				&:hover {
-					color: ${props => props.theme.danger};
-				}
 			}
 		}
 	}

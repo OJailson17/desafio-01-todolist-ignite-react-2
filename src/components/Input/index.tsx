@@ -1,6 +1,5 @@
 import { PlusCircle } from 'phosphor-react';
 import { useState } from 'react';
-import plusSign from '../../assets/plus.svg';
 import { useTask } from '../../context/taskContext';
 import { InputContainer } from './styles';
 

@@ -41,5 +41,9 @@ export const InputContainer = styled.div`
 		gap: 0.5rem;
 		border-radius: 8px;
 		border: none;
+
+		&:hover {
+			background-color: ${props => props.theme.blue};
+		}
 	}
 `;
